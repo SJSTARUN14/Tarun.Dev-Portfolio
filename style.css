@@ -109,6 +109,15 @@ body::before {
     -webkit-text-fill-color: transparent;
 }
 
+.name-highlight {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    filter: drop-shadow(0 0 8px var(--primary-glow));
+}
+
 /* Glass Card Base */
 .glass-card {
     background: var(--surface);
