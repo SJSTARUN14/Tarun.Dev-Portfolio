@@ -91,6 +91,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Form Handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                // We use the action from the form attribute
+                const response = await fetch(contactForm.getAttribute('action'), {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    submitBtn.style.backgroundColor = '#10b981'; // Success color
+                    submitBtn.textContent = 'Message Sent Successfully!';
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.style.backgroundColor = '';
+                    }, 5000);
+                } else {
+                    // Error from server
+                    const data = await response.json();
+                    throw new Error(data.errors?.[0]?.message || 'Submission failed');
+                }
+            } catch (error) {
+                // Network or other error
+                submitBtn.style.backgroundColor = '#ef4444'; // Error color
+                submitBtn.textContent = 'Error: ' + error.message;
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.style.backgroundColor = '';
+                }, 5000);
+            }
+        });
+    }
+
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

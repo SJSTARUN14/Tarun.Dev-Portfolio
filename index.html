@@ -18,6 +18,22 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://SJSTARUN14.github.io/Tarun.Dev-Portfolio/">
+    <meta property="og:title" content="Tarun Salapu | Software Engineer Portfolio">
+    <meta property="og:description"
+        content="Software Engineer focused on Java Full Stack and Backend Engineering. View my projects and experience.">
+    <meta property="og:image" content="assets/profile-full.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://SJSTARUN14.github.io/Tarun.Dev-Portfolio/">
+    <meta property="twitter:title" content="Tarun Salapu | Software Engineer Portfolio">
+    <meta property="twitter:description"
+        content="Software Engineer focused on Java Full Stack and Backend Engineering.">
+    <meta property="twitter:image" content="assets/profile-full.jpg">
 </head>
 
 <body>
@@ -358,7 +374,11 @@
                             </div>
                         </div>
 
-                        <form action="https://formspree.io/f/sjstarun8@gmail.com" method="POST" class="contact-form">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                            <!-- Web3Forms Config -->
+                            <input type="hidden" name="access_key" value="306a805a-b97c-4375-8e61-fb3988299694">
+                            <input type="hidden" name="subject" value="New Portfolio Message from Tarun.Dev">
+                            <input type="checkbox" name="botcheck" id="" style="display: none;">
                             <div class="form-group">
                                 <label for="name">Your Full Name</label>
                                 <input type="text" name="name" id="name" class="form-control"
